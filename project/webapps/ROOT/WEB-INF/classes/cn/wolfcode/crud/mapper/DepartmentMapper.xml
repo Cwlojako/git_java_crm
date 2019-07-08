@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wolfcode.crud.mapper.DepartmentMapper">
+
+	<select id="selectById" resultType="department">
+		select * from department 
+		where
+		id = #{id}
+	</select>
+	
+	<select id="selectAll" resultType="department">
+		select * from department
+	</select>
+
+	<delete id="deleteById">
+		delete from department where id = #{id}
+	</delete>
+	
+	<update id="updateById">
+		update department set
+		name = #{name},
+		sn = #{sn}
+		where
+		id = #{id}
+	</update>
+	
+	<insert id="insert">
+		insert into department
+		(name,sn)
+		values(#{name},#{sn})
+	</insert>
+
+	<select id="selectRowsByCondition" resultType="int">
+		select count(*) from department 
+	</select>
+
+	<select id="selectDataByCondition" resultType="department">
+		select * from department
+		limit #{startIndex},#{pageSize}
+	</select>
+
+
+</mapper>
